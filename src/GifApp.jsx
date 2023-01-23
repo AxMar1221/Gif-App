@@ -1,9 +1,9 @@
 import { useState } from "react"
-import { AddCategory } from "./Components/AddCategory"
+import { AddCategory, GifGrid } from "./Components"
 
 export const GifApp = () => {
 
-    const [categories, setCategories] = useState(['Star Wars', 'The Mandalorian'])
+    const [categories, setCategories] = useState(['Star Wars'])
 
     const addCategory = ( newCategory ) => {
         // console.log(newCategory)
@@ -18,11 +18,11 @@ export const GifApp = () => {
             // setCategories={ setCategories } 
             newCategory={ event => addCategory( event )}
         />
-        <ol>
-            { categories.map( ( category ) => {
-                return <li key={category}>{category}</li>
-            }) }
-        </ol>
+        {
+            categories.map( ( category ) => ( 
+                <GifGrid key={ category } category={ category }/>
+            ))
+        }
     </>
   )
 }
